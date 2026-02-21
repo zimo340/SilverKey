@@ -1,0 +1,25 @@
+# Python + PyTorch 环境依赖
+# 建议 Python 3.10+
+
+# 核心：PyTorch（按需选择 CPU 或 CUDA 版本）
+# CPU 版本安装：
+#   pip install torch torchvision torchaudio
+# CUDA 12.x 版本安装（推荐有 NVIDIA GPU 时使用）：
+#   pip install torch torchvision torchaudio
+torch>=2.0.0
+torchvision
+torchaudio
+
+# Transformers
+transformers>=4.36.0
+
+# 数据与工具
+datasets>=2.14.0
+numpy>=1.24.0
+tqdm>=4.65.0
+
+# 分词器训练
+tokenizers>=0.15.0
+
+# GRPO 评估 (DeepSeek Judge)
+openai>=1.0.0
