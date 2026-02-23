@@ -30,7 +30,7 @@ from torch.nn.parallel import DistributedDataParallel  # DDP：多卡同步梯�
 from torch.utils.data import DataLoader, DistributedSampler  # 每卡分片数据，不重复
 from transformers import AutoTokenizer  # [SFT] SFT 需一开始就加载 tokenizer（给 SFTDataset 用），pretrain 仅在 eval_bench=1 时加载
 from model.config import SpongeBobConfig
-from model.model_spongebob_pro import SpongeBobForCausalLM
+from model.model_silverkey import SilverKeyForCausalLM
 from dataset.sft_dataset import SFTDataset  # [SFT] pretrain 用 PretrainDataset(.bin)，SFT 用 SFTDataset(jsonl + 只算 assistant loss)
 from utils import get_lr, Logger, is_main_process, init_distributed_mode, SkipBatchSampler
 
@@ -202,11 +202,11 @@ if __name__ == "__main__":
     # [SFT] 用 load_state_dict 加载 .pth 权重文件，pretrain 用 from_pretrained 加载模型目录
     if args.from_weight != 'none' and os.path.exists(args.from_weight):
         Logger(f'Loading model from {args.from_weight}')
-        model = SpongeBobForCausalLM(lm_config)
+        model = SilverKeyForCausalLM(lm_config)
         model.load_state_dict(torch.load(args.from_weight, map_location='cpu'), strict=False)
     else:
         Logger(f'Creating new model: hidden_size={args.hidden_size}, num_layers={args.num_hidden_layers}')
-        model = SpongeBobForCausalLM(lm_config)
+        model = SilverKeyForCausalLM(lm_config)
 
     model = model.to(args.device)
     Logger(f'Model parameters: {sum(p.numel() for p in model.parameters())/1e6:.2f}M')

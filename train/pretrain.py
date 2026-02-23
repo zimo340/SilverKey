@@ -141,7 +141,7 @@ if __name__ == "__main__":
     parser.add_argument("--accumulation_steps", type=int, default=1, help="梯度累积步数")
     parser.add_argument("--grad_clip", type=float, default=1.0, help="梯度裁剪阈值")
     parser.add_argument("--log_interval", type=int, default=10, help="日志打印间隔")
-    parser.add_argument("--save_interval", type=int, default=3000, help="模型保存间隔")
+    parser.add_argument("--save_interval", type=int, default=1000, help="模型保存间隔")
     parser.add_argument('--hidden_size', default=768, type=int, help="隐藏层维度")
     parser.add_argument('--num_hidden_layers', default=12, type=int, help="隐藏层数量")
     parser.add_argument('--max_seq_len', default=512, type=int, help="序列长度")
@@ -152,7 +152,7 @@ if __name__ == "__main__":
     parser.add_argument("--swanlab_project", type=str, default="SilverKey-Pretrain", help="swanlab项目名")
     parser.add_argument("--use_compile", default=1, type=int, choices=[0, 1], help="是否使用torch.compile加速（0=否，1=是）")
     parser.add_argument("--eval_bench", default=1, type=int, choices=[0, 1], help="是否评测benchmark（0=否，1=是）")
-    parser.add_argument("--eval_interval", type=int, default=1000, help="评测间隔步数")
+    parser.add_argument("--eval_interval", type=int, default=100, help="评测间隔步数")
     args = parser.parse_args()
 
     # ========== 1. [DDP] 初始化分布式环境 ==========
