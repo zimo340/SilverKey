@@ -144,7 +144,7 @@ if __name__ == "__main__":
     parser.add_argument("--swanlab_project", type=str, default="SpongeBob-SFT", help="swanlab 项目名")
     parser.add_argument("--use_compile", default=1, type=int, choices=[0, 1], help="是否使用 torch.compile 加速（0=否，1=是）")
     # [SFT] 新增：mini_bench 评测参数（使用 DeepSeek API）
-    parser.add_argument("--enable_eval", type=int, default=0, choices=[0, 1], help="是否启用评估（0=关闭，1=开启）")
+    parser.add_argument("--enable_eval", type=int, default=1, choices=[0, 1], help="是否启用评估（0=关闭，1=开启）")
     parser.add_argument("--eval_interval", type=int, default=1000, help="每隔多少 step 跑 mini_bench（0=关闭），用当前模型推理+DeepSeek Judge 打分")
     parser.add_argument("--judge_api_key", type=str, default='', help="Judge API Key（可直接传入或从环境变量 DEEPSEEK_API_KEY 读取）")
     parser.add_argument("--judge_model", type=str, default="deepseek-chat", help="Judge 模型名")
